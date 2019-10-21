@@ -1,0 +1,71 @@
+<DOCTYPE html>
+<html>
+    <head>
+        <title>BMI Calculator</title>
+        <style>
+                .myStyle1{
+                    color:blue
+                }
+                .myStyle2{
+                    color:green
+                }
+                .myStyle3{
+                    color:orange
+                }
+                .myStyle4{
+                    color:red
+                }
+            </style>
+    </head>
+    <script>
+        function calculateBMI(){
+           var weight = parseFloat(document.getElementById("weight").value); 
+           var feet = parseFloat(document.getElementById("feet").value);
+           var inches = parseFloat(document.getElementById("inches").value);
+
+           var height = (feet * 12) + inches;
+           var bmi = (703 * weight) / (Math.pow(height, 2));
+           var fbmi = document.getElementById("fbmi")
+           fbmi.innerHTML = bmi;
+           
+
+
+           fbmi.classList.remove("myStyle1")
+           fbmi.classList.remove("myStyle2")
+           fbmi.classList.remove("myStyle3")
+           fbmi.classList.remove("myStyle4")
+
+           if(bmi < 18.5 ){
+               fbmi.classList.add("myStyle1")
+           }
+           else if(bmi >= 18.5 && bmi < 25){
+               fbmi.classList.add("myStyle2")
+           }
+           else if(bmi >= 25 && bmi < 30){
+               fbmi.classList.add("myStyle3")
+           }
+           else{
+               fbmi.classList.add("myStyle4")
+           }
+        }
+
+    </script>
+    <body>
+        <form>
+            Please Enter Your Weight in pounds:
+            <input type = "text" id = "weight"><br>
+            Please Enter Your Height: <br>
+            Feet:
+            <input type = "text" id = "feet"><br>
+            Inches:
+            <input type = "text" id = "inches"><br>
+        </form>
+        <div id = "calculate" onclick = "calculateBMI()"> Calculate</div>
+        <div id = "fbmi"></div>
+
+        <div style = "color: blue">Blue = Underweight</div>
+        <div style = "color: green">Green = Normal Weight</div>
+        <div style = "color: orange">Orange = Overweight</div>
+        <div style = "color: red">Red = Obese</div>
+    </body>
+    </html> 
